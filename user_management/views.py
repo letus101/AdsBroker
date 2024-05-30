@@ -18,7 +18,7 @@ def inscription(request):
             city = request.POST.get('city')
             photo = request.FILES.get('photo')
             UserProfile.objects.create(user=user, phone_number=phone_number, city=city, photo=photo)
-            return redirect('connexion')
+            return redirect('article_list')
     else:
         form = CustomUserCreationForm()
     return render(request, 'inscription.html', {'form': form})
@@ -30,7 +30,7 @@ def connexion(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('acceuil')
+            return redirect('article_list')
         else:
             messages.error(request, 'Nom d\'utilisateur ou mot de passe incorrect.')
     return render(request, 'connexion.html')

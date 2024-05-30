@@ -5,7 +5,8 @@ module.exports = {
       './chat/templates/**/*.html',
       './Articles/templates/**/*.js',
       './AdsFavorites/templates/**/*.html',
-      './node_modules/flowbite/**/*.js'
+      './node_modules/flowbite/**/*.js',
+      './**/**/**/*.html',
   ],
   theme: {
     extend: {},

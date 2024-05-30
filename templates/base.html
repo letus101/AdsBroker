@@ -1,3 +1,6 @@
+{% load compress %}
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -5,13 +8,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Flowbite{% endblock %}</title>
 
+    {% compress css %}
+    <link rel="stylesheet" href="{% static 'src/output.css' %}">
+    {% endcompress %}
+
 </head>
 <body>
 <nav class="navbar">
     <div class="navbar-content">
         <img src="#" alt="Ads Broker Logo" class="logo">
         <ul class="menu">
-            <li><a href="#">Home</a></li>
+            <li><a href="{% url 'article_list' %}">Home</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Services</a></li>
             <li><a href="#">Pricing</a></li>
@@ -101,5 +108,6 @@
         margin-top: 50px;
     }
 </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
 </html>
