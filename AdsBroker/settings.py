@@ -136,3 +136,8 @@ STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',
                        'django.contrib.staticfiles.finders.FileSystemFinder',
                        'django.contrib.staticfiles.finders.AppDirectoriesFinder',
                        )
+
+LOGIN_URL = 'connexion'
+LOGIN_REDIRECT_URL = 'acceuil'
+LOGOUT_REDIRECT_URL = 'acceuil'
+

@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <div class="form">
+        <h1>Connexion</h1>
+
+        {% if messages %}
+        <div class="error-messages">
+            {% for message in messages %}
+            <p class="error">{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <form method="post" action="{% url 'connexion' %}">
+            {% csrf_token %}
+            <label for="username">Nom d'utilisateur</label>
+            <input type="text" name="username" required>
+            <label for="password">Mot de passe</label>
+            <input type="password" name="password" required>
+            <button type="submit">Se connecter</button>
+        </form>
+        <p class="link">Pas encore inscrit ? <a href="{% url 'inscription' %}">S'inscrire</a></p>
+    </div>
+</div>
+
+<style>
+ /* CSS */
+/* CSS */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    width: 100%;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 80px; /* Space for the fixed header */
+}
+
+.navbar {
+    background-color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 100%; /* Ensure the header takes the full width */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.navbar-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 30px;
+}
+
+.menu {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    padding: 0 15px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+.profile-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.profile-btn img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.profile-btn.btn-connexion {
+    color: white;
+    background-color: #0084ff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.profile-btn.btn-connexion:hover {
+    opacity: 0.8;
+}
+
+.form-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -30px;
+}
+
+.form {
+    width: 400px;
+    background: #fff;
+    border-radius: 7px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    margin-top: 20px;
+}
+
+h1 {
+    margin: 20px 0;
+}
+
+label {
+    padding: 10px 0;
+    color: #0084ff;
+    cursor: pointer;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+a {
+    font-size: 16px;
+    color: #0084ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+button {
+    color: #fff;
+    background: #0084ff;
+    width: 100%;
+    padding: 10px;
+    font-size: 17px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 6px;
+    outline: none;
+}
+
+button:hover {
+    background: #0084ff;
+    opacity: 0.8;
+}
+
+.link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.error {
+    background-color: red;
+    color: #fff;
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.error-messages {
+    margin-bottom: 20px;
+}
+
+</style>
+</body>
+</html>
+{% endblock %}

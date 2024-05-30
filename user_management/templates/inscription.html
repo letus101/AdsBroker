@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="form">
+        <form method="post" action="{% url 'inscription' %}">
+            {% csrf_token %}
+            <h1>Inscription</h1>
+            {{ form.non_field_errors }}
+            
+            <div class="form-group">
+                <label for="id_username">Username:</label>
+                <input type="text" name="username" id="id_username" required>
+                {% if form.username.errors %}
+                    <ul class="errorlist">
+                        {% for error in form.username.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="id_email">Email:</label>
+                <input type="email" name="email" id="id_email" required>
+                {% if form.email.errors %}
+                    <ul class="errorlist">
+                        {% for error in form.email.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="id_password1">Password:</label>
+                <input type="password" name="password1" id="id_password1" required>
+                {% if form.password1.errors %}
+                    <ul class="errorlist">
+                        {% for error in form.password1.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="id_password2">Password confirmation:</label>
+                <input type="password" name="password2" id="id_password2" required>
+                {% if form.password2.errors %}
+                    <ul class="errorlist">
+                        {% for error in form.password2.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="phone_number">Numéro de téléphone:</label>
+                <input type="text" name="phone_number" id="phone_number">
+            </div>
+
+            <div class="form-group">
+                <label for="city">Ville:</label>
+                <input type="text" name="city" id="city">
+            </div>
+
+            <div class="form-group">
+                <label for="photo">Photo de profil:</label>
+                <input type="file" name="photo" id="photo">
+            </div>
+
+            <button type="submit">S'inscrire</button>
+        </form>
+        <p class="link">Déjà inscrit ? <a href="{% url 'connexion' %}">Se connecter</a></p>
+    </div>
+</div>
+
+<style>
+    /* CSS spécifique à l'inscription */
+    .container {
+        width: 400px;
+        background: #fff;
+        border-radius: 7px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+        padding: 30px;
+        margin: 0 auto;
+        margin-top: 50px;
+    }
+    .form {
+        padding: 30px;
+    }
+
+    label {
+        padding: 10px 0;
+        color: #0084ff;
+        cursor: pointer;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        font-size: 17px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        outline: none;
+        margin-bottom: 15px;
+        margin-top: 10px;
+    }
+
+    a {
+        font-size: 16px;
+        color: #0084ff;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    button {
+        color: #fff;
+        background: #0084ff;
+        width: 100%;
+        padding: 10px;
+        font-size: 17px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 6px;
+        outline: none;
+    }
+
+    button:hover {
+        background: #0084ff;
+        opacity: 0.8;
+    }
+
+    .link {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .errorlist {
+        color: red;
+        list-style-type: none;
+        padding: 0;
+        margin: 5px 0;
+    }
+</style>
+
+{% endblock %}

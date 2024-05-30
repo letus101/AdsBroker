@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowbite</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Assurez-vous que ce chemin est correct -->
+</head>
+<body>
+<nav class="navbar">
+    <div class="navbar-content">       
+            <img src="#" alt="Ads Broker Logo" class="logo">
+        <ul class="menu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        {% if user.is_authenticated %}
+        <a href="{% url 'profile' %}" class="profile-btn">
+            <img src="/docs/images/people/profile-picture-3.jpg" alt="Profile">
+        </a>
+        {% else %}
+        <a href="{% url 'inscription' %}" class="profile-btn">
+            Se connecter
+        </a>
+        {% endif %}
+    </div>
+</nav>
+<style>
+    /* Base */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    background-color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px; /* Max width of the navbar */
+    margin: auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 30px;
+}
+
+.menu {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    padding: 0 15px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+.profile-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.profile-btn img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+</style>
+</body>
+</html>
