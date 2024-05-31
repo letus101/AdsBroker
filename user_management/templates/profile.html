@@ -38,11 +38,8 @@
             <img src="{{ article.photo1.url }}" alt="{{ article.name }}" class="article-photo">
             <div class="article-info">
                 <h2>{{ article.name }}</h2>
-                <p>{{ article.description }}</p>
-                <p><strong>Prix :</strong> {{ article.price }} DH</p>
-                <p><strong>Téléphone :</strong> {{ article.phone_number }}</p>
-                <p><strong>Ville :</strong> {{ article.ville }}</p>
-                <p><strong>Posté il y a :</strong> {{ article.created|timesince }}</p>
+                
+                <a href="{% url 'article_detail' article.pk %}" class="text-blue-500 inline-flex items-center md:mb-2 lg:mb-0">Savoir plus</a>
             </div>
         </div>
         {% empty %}
