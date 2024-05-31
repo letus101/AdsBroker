@@ -20,7 +20,7 @@ def inscription(request):
             city = request.POST.get('city')
             photo = request.FILES.get('photo')
             UserProfile.objects.create(user=user, phone_number=phone_number, city=city, photo=photo)
-            return redirect('article_list')
+            return redirect('connexion')
     else:
         form = CustomUserCreationForm()
     return render(request, 'inscription.html', {'form': form})
