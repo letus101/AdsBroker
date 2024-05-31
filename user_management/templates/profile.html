@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="container">
-    <h1>Profil de {{ user.username }}</h1>
+    <h1 class="nom_user">Profil de {{ user.username }}</h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-group">
@@ -32,9 +32,73 @@
             <a href="{% url 'deconnexion' %}" class="btn btn-danger">Déconnexion</a>
         </div>
     </form>
+    <div class="articles-container">
+        {% for article in articles %}
+        <div class="article-card">
+            <img src="{{ article.photo1.url }}" alt="{{ article.name }}" class="article-photo">
+            <div class="article-info">
+                <h2>{{ article.name }}</h2>
+                <p>{{ article.description }}</p>
+                <p><strong>Prix :</strong> {{ article.price }} DH</p>
+                <p><strong>Téléphone :</strong> {{ article.phone_number }}</p>
+                <p><strong>Ville :</strong> {{ article.ville }}</p>
+                <p><strong>Posté il y a :</strong> {{ article.created|timesince }}</p>
+            </div>
+        </div>
+        {% empty %}
+            <p>Aucun article publié.</p>
+        {% endfor %}
+    </div>
 </div>
 
 <style>
+
+    .articles-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: -10px; /* Ajuste l'espacement négatif pour compenser la marge des cartes */
+    }
+    
+    .article-card {
+        flex: 1 1 30%; /* Chaque carte prendra environ un tiers de l'espace disponible */
+        margin: 10px; /* Espacement autour de chaque carte */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce pour la définition */
+        background: #ffffff; /* Arrière-plan blanc pour les cartes */
+        border-radius: 8px; /* Coins arrondis */
+        overflow: hidden; /* Garde tout contenu interne à l'intérieur des coins arrondis */
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .article-photo {
+        width: 70%; /* S'assure que la photo couvre toute la largeur de la carte */
+        height: auto;
+        aspect-ratio: 8 / 10.5; /* Ratio fixe pour les images */
+    }
+    
+    .article-info {
+        padding: 15px;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-grow: 1; /* Permet aux informations de remplir l'espace restant dans la carte */
+    }
+    
+    .article-info h2, .article-info p {
+        margin: 5px 0;
+    }
+    
+    .article-info p {
+        font-size: 0.9em; /* Taille de police légèrement plus petite pour les détails */
+        color: #666; /* Couleur de texte plus douce pour améliorer la lisibilité */
+    }
+
+    .nom_user{
+        font-size:24px;
+        margin-left : 375px;
+    }
     .container {
         width: 60%;
         margin: 0 auto;

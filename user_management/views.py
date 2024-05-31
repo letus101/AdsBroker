@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm 
+from django.contrib.auth.forms import UserCreationForm
+
+from Articles.models import Article 
 from .form import CustomUserCreationForm, UserProfileForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
@@ -46,23 +48,22 @@ def acceuil(request):
 @login_required
 def profile(request):
     user_profile, created = UserProfile.objects.get_or_create(user=request.user)
-    
+    articles = Article.objects.filter(author=request.user)
+
+    user_form = CustomUserChangeForm(instance=request.user)
+    profile_form = UserProfileForm(instance=user_profile)
+
     if request.method == 'POST':
         user_form = CustomUserChangeForm(request.POST, instance=request.user)
         profile_form = UserProfileForm(request.POST, request.FILES, instance=user_profile)
-        
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
             messages.success(request, 'Profil mis à jour avec succès.')
-            return redirect('profile')  # Redirection après la mise à jour
-        else:
-            messages.error(request, 'Erreur lors de la mise à jour du profil.')
-    else:
-        user_form = CustomUserChangeForm(instance=request.user)
-        profile_form = UserProfileForm(instance=user_profile)
+            return redirect('profile')  # Vérifiez le nom de l'URL du profil
 
     return render(request, 'profile.html', {
         'user_form': user_form,
-        'profile_form': profile_form
+        'profile_form': profile_form,
+        'articles': articles
     })
