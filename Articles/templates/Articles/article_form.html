@@ -6,7 +6,42 @@
         <h1 class="text-2xl font-bold text-gray-800 mb-4">{% if form.instance.pk %}Modifier{% else %}Ajouter{% endif %} un article</h1>
         <form method="post" enctype="multipart/form-data" class="space-y-4">
             {% csrf_token %}
-            {{ form.as_p }}
+            <div class="flex flex-col space-y-2">
+                <label for="{{ form.name.id_for_label }}" class="font-semibold">Nom:</label>
+                {{ form.name }}
+            </div>
+            <div class="flex flex-col space-y-2">
+                <label for="{{ form.price.id_for_label }}" class="font-semibold">Prix:</label>
+                {{ form.price }}
+            </div>
+            <div class="flex flex-col space-y-2">
+                <label for="{{ form.description.id_for_label }}" class="font-semibold">Description:</label>
+                {{ form.description }}
+            </div>
+            <div class="flex flex-col space-y-2">
+                <label for="{{ form.photo1.id_for_label }}" class="font-semibold">Photo 1:</label>
+                {{ form.photo1 }}
+            </div>
+            <div class="flex flex-col space-y-2">
+                <label for="{{ form.photo2.id_for_label }}" class="font-semibold">Photo 2:</label>
+                {{ form.photo2 }}
+            </div>
+            <div class="flex flex-col space-y-2">
+                <label for="{{ form.photo3.id_for_label }}" class="font-semibold">Photo 3:</label>
+                {{ form.photo3 }}
+            </div>
+            <div class="flex flex-col space-y-2">
+                <label for="{{ form.phone_number.id_for_label }}" class="font-semibold">Numéro de téléphone:</label>
+                {{ form.phone_number }}
+            </div>
+            <div class="flex flex-col space-y-2">
+                <label for="{{ form.category.id_for_label }}" class="font-semibold">Catégorie:</label>
+                {{ form.category }}
+            </div>
+            <div class="flex flex-col space-y-2">
+                <label for="{{ form.ville.id_for_label }}" class="font-semibold">Ville:</label>
+                {{ form.ville }}
+            </div>
             <div class="flex justify-end space-x-4">
                 <button type="button" onclick="history.back()" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Annuler</button>
                 <button type="submit" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">Enregistrer</button>

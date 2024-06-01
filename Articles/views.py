@@ -27,7 +27,6 @@ def article_create(request):
         form = ArticleForm(request.POST, request.FILES)
         if form.is_valid():
             article = form.save(commit=False)
-            # Associate the current user's ID with the article
             article.author = request.user
             article.save()
             return redirect('article_detail', pk=article.pk)

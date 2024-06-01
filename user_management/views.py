@@ -1,15 +1,14 @@
+
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 
 from Articles.models import Article 
-from .form import CustomUserCreationForm, UserProfileForm
+from .form import CustomUserCreationForm, UserProfileForm, CustomUserChangeForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import UserProfile
 from django.contrib.auth.forms import UserChangeForm
-from .form import CustomUserCreationForm, UserProfileForm, CustomUserChangeForm  # Assurez-vous que c'est correctement importé.
-
 
 def inscription(request):
     if request.method == 'POST':
@@ -60,10 +59,11 @@ def profile(request):
             user_form.save()
             profile_form.save()
             messages.success(request, 'Profil mis à jour avec succès.')
-            return redirect('profile')  # Vérifiez le nom de l'URL du profil
+            return redirect('profile')
 
     return render(request, 'profile.html', {
         'user_form': user_form,
         'profile_form': profile_form,
         'articles': articles
     })
+
