@@ -3,13 +3,11 @@ from django.contrib.auth.models import User
 
 class Category(models.TextChoices):
     PHONE = 'phone', 'Phone'
-    ACCESSORIES = 'accessories', 'Accessories'
     VOITURE = 'voiture', 'Voiture'
 
 class Ville(models.TextChoices):
     CASABLANCA = 'casablanca', 'Casablanca'
     RABAT = 'rabat', 'Rabat'
-    MARRAKECH = 'marrakech', 'Marrakech'
 
 class Article(models.Model):
     name = models.CharField(max_length=100)

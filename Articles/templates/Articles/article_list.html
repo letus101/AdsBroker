@@ -14,11 +14,8 @@
     </style>
 </head>
 <body>
-    <div class="flex justify-center mb-8">
-        <a href="{% url 'article_create' %}" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">Ajouter un article</a>
-    </div>
+   
     <div class="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
-        <h1 class="text-3xl font-bold mb-8 text-center">Articles</h1>
         
         <form action="" method="GET" class="mb-4 flex justify-center">
             <input type="text" name="search" placeholder="Rechercher par nom" class="border border-gray-300 p-2 rounded-md mr-2">
@@ -26,13 +23,11 @@
                 <option value="" selected disabled>Filtrer par catégorie</option>
                 <option value="phone">Phone</option>
                 <option value="voiture">Voiture</option>
-                <option value="accessoires">Accessoires</option>
             </select>
             <select name="ville" class="border border-gray-300 p-2 rounded-md">
                 <option value="" selected disabled>Filtrer par ville</option>
                 <option value="Casablanca">Casablanca</option>
                 <option value="Rabat">Rabat</option>
-                <option value="Marakech">Marakech</option>
             </select>
             <button type="submit" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">Rechercher</button>
         </form>
