@@ -53,4 +53,3 @@ def article_delete(request, pk):
     if request.method == "POST":
         article.delete()
         return redirect('article_list')
-    return render(request, 'articles/article_confirm_delete.html', {'article': article})
